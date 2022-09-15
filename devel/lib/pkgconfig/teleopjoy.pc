@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/devel
+
+Name: teleopjoy
+Description: Description of teleopjoy
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

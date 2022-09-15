@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/devel
+
+Name: irblaster
+Description: Description of irblaster
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

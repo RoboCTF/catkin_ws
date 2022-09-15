@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+# license removed for brevity
+import rospy
+import serial
+from sensor_msgs.msg import Joy
+from std_msgs.msg import Bool
+
+
+shoot = Bool()
+ser = serial.Serial('/dev/ttyUSB0',115200)
+
+
+print(ser.name)
+def callback(data):
+    
+    if data.buttons[6] == 1:
+        shoot.data = True
+        ser.write(b'1')
+    else:
+        shoot.data = False
+        ser.write(b'0')
+
+def irblaster():
+     
+
+    pubIR = rospy.Publisher('/ir_send_topic', Bool, queue_size=10)
+    rospy.init_node('irblaster', anonymous=True)
+    rate = rospy.Rate(10) # 10hz
+    subJoy = rospy.Subscriber('/joy', Joy, callback)
+    
+    while not rospy.is_shutdown():
+        pubIR.publish(shoot)
+        print shoot.data
+        #print ser.readline()
+
+        rate.sleep()
+	 
+if __name__ == '__main__':
+	try:
+		irblaster()
+	except rospy.ROSInterruptException:
+		pass
+

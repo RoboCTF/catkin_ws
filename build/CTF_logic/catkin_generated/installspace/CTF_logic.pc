@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/install
+
+Name: CTF_logic
+Description: Description of CTF_logic
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
