@@ -108,7 +108,7 @@ class DkLowLevelCtrl():
 
     @property
     def is_controller_connected(self):
-        print time.time() - self._last_time_cmd_rcv
+        print(time.time() - self._last_time_cmd_rcv)
         return(time.time() - self._last_time_cmd_rcv < self._timeout_s)
 
     def run(self):
@@ -117,7 +117,7 @@ class DkLowLevelCtrl():
         rate = rospy.Rate(10)
 
         while not rospy.is_shutdown():
-            print self._last_time_cmd_rcv, self.is_controller_connected
+            print(self._last_time_cmd_rcv, self.is_controller_connected)
             if not self.is_controller_connected:
                 self.set_actuators_idle()
 
