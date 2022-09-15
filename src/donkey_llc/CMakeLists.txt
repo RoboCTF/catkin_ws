@@ -9,6 +9,7 @@ project(donkey_llc)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   rospy
+  ros-i2cpwmboard
 )
 
 ## System dependencies are found with CMake's conventions

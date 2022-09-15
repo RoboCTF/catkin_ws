@@ -38,7 +38,7 @@ class ServoConvert():
         #--- value is in [-1, 1]
         self.value      = value_in
         self.value_out  = int(self._dir*value_in*self._half_range + self._center)
-        print self.id, self.value_out
+        print(self.id, self.value_out)
         return(self.value_out)
 
 class DkLowLevelCtrl():
@@ -78,12 +78,12 @@ class DkLowLevelCtrl():
         #-- Save the time
         self._last_time_cmd_rcv = time.time()
         if death.data == 1:
-            #-- The acruators are zero if the car is dead 
+            #-- The actuators are zero if the car is dead 
             self.actuators['throttle'].get_value_out(0)
             self.actuators['steering'].get_value_out(0)
             rospy.loginfo("Setting actutors to idle")
             self.send_servo_msg() 
-            time.sleep(1) #the car should stay dead for 5 second
+            time.sleep(1) # the car should stay dead for 5 second
         else:
             #-- Convert vel into servo values
             self.actuators['throttle'].get_value_out(message.linear.x)
